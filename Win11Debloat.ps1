@@ -137,7 +137,7 @@ function ShowAppSelectionForm {
     $handler_saveButton_Click= 
     {
         if ($selectionBox.CheckedItems -contains "Microsoft.WindowsStore" -and -not $Silent) {
-            $warningSelection = [System.Windows.Forms.Messagebox]::Show('Are you sure you wish to uninstall the Microsoft Store? This app cannot easily be reinstalled.', 'Are you sure?', 'YesNo', 'Warning')
+            $warningSelection = [System.Windows.Forms.Messagebox]::Show('Tem certeza que deseja desinstalar a Microsoft Store? Este app nao pode ser reinstalado facilmente.', 'Tem certeza?', 'YesNo', 'Warning')
         
             if ($warningSelection -eq 'No') {
                 return
@@ -281,7 +281,7 @@ function ShowAppSelectionForm {
         $selectionBox.Sorted = $True
     }
 
-    $form.Text = "Win11Debloat Application Selection"
+    $form.Text = "Win11Debloat - Selecao de Aplicativos"
     $form.Name = "appSelectionForm"
     $form.DataBindings.DefaultDataSourceUpdateMode = 0
     $form.ClientSize = New-Object System.Drawing.Size(400,502)
@@ -291,7 +291,7 @@ function ShowAppSelectionForm {
     $button1.TabIndex = 4
     $button1.Name = "saveButton"
     $button1.UseVisualStyleBackColor = $True
-    $button1.Text = "Confirm"
+    $button1.Text = "Confirmar"
     $button1.Location = New-Object System.Drawing.Point(27,472)
     $button1.Size = New-Object System.Drawing.Size(75,23)
     $button1.DataBindings.DefaultDataSourceUpdateMode = 0
@@ -303,7 +303,7 @@ function ShowAppSelectionForm {
     $button2.Name = "cancelButton"
     $button2.DialogResult = [System.Windows.Forms.DialogResult]::Cancel
     $button2.UseVisualStyleBackColor = $True
-    $button2.Text = "Cancel"
+    $button2.Text = "Cancelar"
     $button2.Location = New-Object System.Drawing.Point(129,472)
     $button2.Size = New-Object System.Drawing.Size(75,23)
     $button2.DataBindings.DefaultDataSourceUpdateMode = 0
@@ -314,13 +314,13 @@ function ShowAppSelectionForm {
     $label.Location = New-Object System.Drawing.Point(13,5)
     $label.Size = New-Object System.Drawing.Size(400,14)
     $Label.Font = 'Microsoft Sans Serif,8'
-    $label.Text = 'Check apps that you wish to remove, uncheck apps that you wish to keep'
+    $label.Text = 'Marque os apps que deseja remover, desmarque os que deseja manter'
 
     $form.Controls.Add($label)
 
     $loadingLabel.Location = New-Object System.Drawing.Point(16,46)
     $loadingLabel.Size = New-Object System.Drawing.Size(300,418)
-    $loadingLabel.Text = 'Loading apps...'
+    $loadingLabel.Text = 'Carregando apps...'
     $loadingLabel.BackColor = "White"
     $loadingLabel.Visible = $false
 
@@ -329,7 +329,7 @@ function ShowAppSelectionForm {
     $onlyInstalledCheckBox.TabIndex = 6
     $onlyInstalledCheckBox.Location = New-Object System.Drawing.Point(230,474)
     $onlyInstalledCheckBox.Size = New-Object System.Drawing.Size(150,20)
-    $onlyInstalledCheckBox.Text = 'Only show installed apps'
+    $onlyInstalledCheckBox.Text = 'Mostrar apenas instalados'
     $onlyInstalledCheckBox.add_CheckedChanged($load_Apps)
 
     $form.Controls.Add($onlyInstalledCheckBox)
@@ -337,7 +337,7 @@ function ShowAppSelectionForm {
     $checkUncheckCheckBox.TabIndex = 7
     $checkUncheckCheckBox.Location = New-Object System.Drawing.Point(16,22)
     $checkUncheckCheckBox.Size = New-Object System.Drawing.Size(150,20)
-    $checkUncheckCheckBox.Text = 'Check/Uncheck all'
+    $checkUncheckCheckBox.Text = 'Marcar/Desmarcar todos'
     $checkUncheckCheckBox.add_CheckedChanged($check_All)
 
     $form.Controls.Add($checkUncheckCheckBox)
@@ -361,6 +361,10 @@ function ShowAppSelectionForm {
 
     # Focus selectionBox when form opens
     $form.Add_Shown({$form.Activate(); $selectionBox.Focus()})
+
+    # Trazer janela para frente
+    $form.TopMost = $true
+    $form.TopMost = $false
 
     # Show the Form
     return $form.ShowDialog()
