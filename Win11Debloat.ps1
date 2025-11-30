@@ -974,18 +974,18 @@ function DisplayCustomModeOptions {
     # Get current Windows build version to compare against features
     $WinVersion = Get-ItemPropertyValue 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion' CurrentBuild
             
-    PrintHeader 'Custom Mode'
+    PrintHeader 'Modo Personalizado'
 
-    AddParameter 'CreateRestorePoint' 'Create a system restore point'
+    AddParameter 'CreateRestorePoint' 'Criar um ponto de restauracao do sistema'
 
     # Show options for removing apps, only continue on valid input
     Do {
-        Write-Host "Options:" -ForegroundColor Yellow
-        Write-Host " (n) Don't remove any apps" -ForegroundColor Yellow
-        Write-Host " (1) Only remove the default selection of apps" -ForegroundColor Yellow
-        Write-Host " (2) Remove the default selection of apps, as well as mail & calendar apps and gaming related apps"  -ForegroundColor Yellow
-        Write-Host " (3) Manually select which apps to remove" -ForegroundColor Yellow
-        $RemoveAppsInput = Read-Host "Do you want to remove any apps? Apps will be removed for all users (n/1/2/3)"
+        Write-Host "Opcoes:" -ForegroundColor Yellow
+        Write-Host " (n) Nao remover nenhum app" -ForegroundColor Yellow
+        Write-Host " (1) Remover apenas a selecao padrao de apps" -ForegroundColor Yellow
+        Write-Host " (2) Remover a selecao padrao de apps, alem de apps de email, calendario e jogos"  -ForegroundColor Yellow
+        Write-Host " (3) Selecionar manualmente quais apps remover" -ForegroundColor Yellow
+        $RemoveAppsInput = Read-Host "Deseja remover algum app? Apps serao removidos para todos os usuarios (n/1/2/3)"
 
         # Show app selection form if user entered option 3
         if ($RemoveAppsInput -eq '3') {
@@ -994,7 +994,7 @@ function DisplayCustomModeOptions {
             if ($result -ne [System.Windows.Forms.DialogResult]::OK) {
                 # User cancelled or closed app selection, show error and change RemoveAppsInput so the menu will be shown again
                 Write-Output ""
-                Write-Host "Cancelled application selection, please try again" -ForegroundColor Red
+                Write-Host "Selecao de aplicativos cancelada, por favor tente novamente" -ForegroundColor Red
 
                 $RemoveAppsInput = 'c'
             }
@@ -1007,49 +1007,49 @@ function DisplayCustomModeOptions {
     # Select correct option based on user input
     switch ($RemoveAppsInput) {
         '1' {
-            AddParameter 'RemoveApps' 'Remove the default selection of apps'
+            AddParameter 'RemoveApps' 'Remover a selecao padrao de apps'
         }
         '2' {
-            AddParameter 'RemoveApps' 'Remove the default selection of apps'
-            AddParameter 'RemoveCommApps' 'Remove the Mail, Calendar, and People apps'
-            AddParameter 'RemoveW11Outlook' 'Remove the new Outlook for Windows app'
-            AddParameter 'RemoveGamingApps' 'Remove the Xbox App and Xbox Gamebar'
-            AddParameter 'DisableDVR' 'Disable Xbox game/screen recording'
-            AddParameter 'DisableGameBarIntegration' 'Disable Game Bar integration'
+            AddParameter 'RemoveApps' 'Remover a selecao padrao de apps'
+            AddParameter 'RemoveCommApps' 'Remover os apps Mail, Calendario e Pessoas'
+            AddParameter 'RemoveW11Outlook' 'Remover o novo app Outlook para Windows'
+            AddParameter 'RemoveGamingApps' 'Remover o Xbox App e Xbox Gamebar'
+            AddParameter 'DisableDVR' 'Desativar gravacao de tela/jogo do Xbox'
+            AddParameter 'DisableGameBarIntegration' 'Desativar integracao do Game Bar'
         }
         '3' {
-            Write-Output "You have selected $($script:SelectedApps.Count) apps for removal"
+            Write-Output "Voce selecionou $($script:SelectedApps.Count) apps para remocao"
 
-            AddParameter 'RemoveAppsCustom' "Remove $($script:SelectedApps.Count) apps:"
+            AddParameter 'RemoveAppsCustom' "Remover $($script:SelectedApps.Count) apps:"
 
             Write-Output ""
 
-            if ($( Read-Host -Prompt "Disable Game Bar integration and game/screen recording? This also stops ms-gamingoverlay and ms-gamebar popups (y/n)" ) -eq 'y') {
-                AddParameter 'DisableDVR' 'Disable Xbox game/screen recording'
-                AddParameter 'DisableGameBarIntegration' 'Disable Game Bar integration'
+            if ($( Read-Host -Prompt "Desativar integracao do Game Bar e gravacao de tela/jogo? Isso tambem para popups ms-gamingoverlay e ms-gamebar (y/n)" ) -eq 'y') {
+                AddParameter 'DisableDVR' 'Desativar gravacao de tela/jogo do Xbox'
+                AddParameter 'DisableGameBarIntegration' 'Desativar integracao do Game Bar'
             }
         }
     }
 
     Write-Output ""
 
-    if ($( Read-Host -Prompt "Disable telemetry, diagnostic data, activity history, app-launch tracking and targeted ads? (y/n)" ) -eq 'y') {
-        AddParameter 'DisableTelemetry' 'Disable telemetry, diagnostic data, activity history, app-launch tracking & targeted ads'
+    if ($( Read-Host -Prompt "Desativar telemetria, dados de diagnostico, historico de atividades, rastreamento de apps e anuncios direcionados? (y/n)" ) -eq 'y') {
+        AddParameter 'DisableTelemetry' 'Desativar telemetria, dados de diagnostico, historico de atividades, rastreamento de apps e anuncios direcionados'
     }
 
     Write-Output ""
 
-    if ($( Read-Host -Prompt "Disable tips, tricks, suggestions and ads in start, settings, notifications, explorer, lockscreen and Edge? (y/n)" ) -eq 'y') {
-        AddParameter 'DisableSuggestions' 'Disable tips, tricks, suggestions and ads in start, settings, notifications and File Explorer'
-        AddParameter 'DisableEdgeAds' 'Disable ads, suggestions and the MSN news feed in Microsoft Edge'
-        AddParameter 'DisableSettings365Ads' 'Disable Microsoft 365 ads in Settings Home'
-        AddParameter 'DisableLockscreenTips' 'Disable tips & tricks on the lockscreen'
+    if ($( Read-Host -Prompt "Desativar dicas, truques, sugestoes e anuncios no menu iniciar, configuracoes, notificacoes, explorador, tela de bloqueio e Edge? (y/n)" ) -eq 'y') {
+        AddParameter 'DisableSuggestions' 'Desativar dicas, truques, sugestoes e anuncios no menu iniciar, configuracoes, notificacoes e Explorador de Arquivos'
+        AddParameter 'DisableEdgeAds' 'Desativar anuncios, sugestoes e feed de noticias MSN no Microsoft Edge'
+        AddParameter 'DisableSettings365Ads' 'Desativar anuncios do Microsoft 365 na Pagina Inicial de Configuracoes'
+        AddParameter 'DisableLockscreenTips' 'Desativar dicas e truques na tela de bloqueio'
     }
 
     Write-Output ""
 
-    if ($( Read-Host -Prompt "Disable & remove Bing web search, Bing AI and Cortana from Windows search? (y/n)" ) -eq 'y') {
-        AddParameter 'DisableBing' 'Disable & remove Bing web search, Bing AI and Cortana from Windows search'
+    if ($( Read-Host -Prompt "Desativar e remover pesquisa web do Bing, Bing AI e Cortana da pesquisa do Windows? (y/n)" ) -eq 'y') {
+        AddParameter 'DisableBing' 'Desativar e remover pesquisa web do Bing, Bing AI e Cortana da pesquisa do Windows'
     }
 
     # Only show this option for Windows 11 users running build 22621 or later
@@ -1058,87 +1058,87 @@ function DisplayCustomModeOptions {
 
         # Show options for disabling/removing AI features, only continue on valid input
         Do {
-            Write-Host "Options:" -ForegroundColor Yellow
-            Write-Host " (n) Don't disable any AI features" -ForegroundColor Yellow
-            Write-Host " (1) Disable Microsoft Copilot, Windows Recall and Click to Do" -ForegroundColor Yellow
-            Write-Host " (2) Disable Microsoft Copilot, Windows Recall, Click to Do and AI features in Microsoft Edge, Paint and Notepad"  -ForegroundColor Yellow
-            $DisableAIInput = Read-Host "Do you want to disable any AI features? This applies to all users (n/1/2)"
+            Write-Host "Opcoes:" -ForegroundColor Yellow
+            Write-Host " (n) Nao desativar nenhum recurso de IA" -ForegroundColor Yellow
+            Write-Host " (1) Desativar Microsoft Copilot, Windows Recall e Click to Do" -ForegroundColor Yellow
+            Write-Host " (2) Desativar Microsoft Copilot, Windows Recall, Click to Do e recursos de IA no Microsoft Edge, Paint e Bloco de Notas"  -ForegroundColor Yellow
+            $DisableAIInput = Read-Host "Deseja desativar algum recurso de IA? Isso se aplica a todos os usuarios (n/1/2)"
         }
         while ($DisableAIInput -ne 'n' -and $DisableAIInput -ne '0' -and $DisableAIInput -ne '1' -and $DisableAIInput -ne '2') 
 
         # Select correct option based on user input
         switch ($DisableAIInput) {
             '1' {
-                AddParameter 'DisableCopilot' 'Disable & remove Microsoft Copilot'
-                AddParameter 'DisableRecall' 'Disable Windows Recall'
-                AddParameter 'DisableClickToDo' 'Disable Click to Do (AI text & image analysis)'
+                AddParameter 'DisableCopilot' 'Desativar e remover Microsoft Copilot'
+                AddParameter 'DisableRecall' 'Desativar Windows Recall'
+                AddParameter 'DisableClickToDo' 'Desativar Click to Do (analise de texto e imagem por IA)'
             }
             '2' {
-                AddParameter 'DisableCopilot' 'Disable & remove Microsoft Copilot'
-                AddParameter 'DisableRecall' 'Disable Windows Recall'
-                AddParameter 'DisableClickToDo' 'Disable Click to Do (AI text & image analysis)'
-                AddParameter 'DisableEdgeAI' 'Disable AI features in Edge'
-                AddParameter 'DisablePaintAI' 'Disable AI features in Paint'
-                AddParameter 'DisableNotepadAI' 'Disable AI features in Notepad'
+                AddParameter 'DisableCopilot' 'Desativar e remover Microsoft Copilot'
+                AddParameter 'DisableRecall' 'Desativar Windows Recall'
+                AddParameter 'DisableClickToDo' 'Desativar Click to Do (analise de texto e imagem por IA)'
+                AddParameter 'DisableEdgeAI' 'Desativar recursos de IA no Edge'
+                AddParameter 'DisablePaintAI' 'Desativar recursos de IA no Paint'
+                AddParameter 'DisableNotepadAI' 'Desativar recursos de IA no Bloco de Notas'
             }
         }
     }
 
     Write-Output ""
 
-    if ($( Read-Host -Prompt "Disable Windows Spotlight background on desktop? (y/n)" ) -eq 'y') {
-        AddParameter 'DisableDesktopSpotlight' 'Disable the Windows Spotlight desktop background option.'
+    if ($( Read-Host -Prompt "Desativar plano de fundo Windows Spotlight na area de trabalho? (y/n)" ) -eq 'y') {
+        AddParameter 'DisableDesktopSpotlight' 'Desativar a opcao de plano de fundo Windows Spotlight na area de trabalho'
     }
 
     Write-Output ""
 
-    if ($( Read-Host -Prompt "Enable dark mode for system and apps? (y/n)" ) -eq 'y') {
-        AddParameter 'EnableDarkMode' 'Enable dark mode for system and apps'
+    if ($( Read-Host -Prompt "Ativar modo escuro para sistema e apps? (y/n)" ) -eq 'y') {
+        AddParameter 'EnableDarkMode' 'Ativar modo escuro para sistema e apps'
     }
 
     Write-Output ""
 
-    if ($( Read-Host -Prompt "Disable transparency, animations and visual effects? (y/n)" ) -eq 'y') {
-        AddParameter 'DisableTransparency' 'Disable transparency effects'
-        AddParameter 'DisableAnimations' 'Disable animations and visual effects'
+    if ($( Read-Host -Prompt "Desativar transparencia, animacoes e efeitos visuais? (y/n)" ) -eq 'y') {
+        AddParameter 'DisableTransparency' 'Desativar efeitos de transparencia'
+        AddParameter 'DisableAnimations' 'Desativar animacoes e efeitos visuais'
     }
 
     # Only show this option for Windows 11 users running build 22000 or later
     if ($WinVersion -ge 22000) {
         Write-Output ""
 
-        if ($( Read-Host -Prompt "Restore the old Windows 10 style context menu? (y/n)" ) -eq 'y') {
-            AddParameter 'RevertContextMenu' 'Restore the old Windows 10 style context menu'
+        if ($( Read-Host -Prompt "Restaurar o menu de contexto antigo estilo Windows 10? (y/n)" ) -eq 'y') {
+            AddParameter 'RevertContextMenu' 'Restaurar o menu de contexto antigo estilo Windows 10'
         }
     }
 
     Write-Output ""
 
-    if ($( Read-Host -Prompt "Turn off Enhance Pointer Precision, also known as mouse acceleration? (y/n)" ) -eq 'y') {
-        AddParameter 'DisableMouseAcceleration' 'Turn off Enhance Pointer Precision (mouse acceleration)'
+    if ($( Read-Host -Prompt "Desativar Aprimorar Precisao do Ponteiro, tambem conhecido como aceleracao do mouse? (y/n)" ) -eq 'y') {
+        AddParameter 'DisableMouseAcceleration' 'Desativar Aprimorar Precisao do Ponteiro (aceleracao do mouse)'
     }
 
     # Only show this option for Windows 11 users running build 26100 or later
     if ($WinVersion -ge 26100) {
         Write-Output ""
 
-        if ($( Read-Host -Prompt "Disable the Sticky Keys keyboard shortcut? (y/n)" ) -eq 'y') {
-            AddParameter 'DisableStickyKeys' 'Disable the Sticky Keys keyboard shortcut'
+        if ($( Read-Host -Prompt "Desativar o atalho de teclado das Teclas de Aderencia? (y/n)" ) -eq 'y') {
+            AddParameter 'DisableStickyKeys' 'Desativar o atalho de teclado das Teclas de Aderencia'
         }
     }
 
     Write-Output ""
 
-    if ($( Read-Host -Prompt "Disable Fast Start-up? This applies to all users (y/n)" ) -eq 'y') {
-        AddParameter 'DisableFastStartup' 'Disable Fast Start-up'
+    if ($( Read-Host -Prompt "Desativar Inicializacao Rapida? Isso se aplica a todos os usuarios (y/n)" ) -eq 'y') {
+        AddParameter 'DisableFastStartup' 'Desativar Inicializacao Rapida'
     }
 
     # Only show this option for Windows 11 users running build 22000 or later, and if the machine has at least one battery
     if (($WinVersion -ge 22000) -and $script:ModernStandbySupported) {
         Write-Output ""
 
-        if ($( Read-Host -Prompt "Disable network connectivity during Modern Standby? This applies to all users (y/n)" ) -eq 'y') {
-            AddParameter 'DisableModernStandbyNetworking' 'Disable network connectivity during Modern Standby'
+        if ($( Read-Host -Prompt "Desativar conectividade de rede durante Modern Standby? Isso se aplica a todos os usuarios (y/n)" ) -eq 'y') {
+            AddParameter 'DisableModernStandbyNetworking' 'Desativar conectividade de rede durante Modern Standby'
         }
     }
 
@@ -1146,23 +1146,23 @@ function DisplayCustomModeOptions {
     if ((get-ciminstance -query "select caption from win32_operatingsystem where caption like '%Windows 10%'") -or $script:Params.ContainsKey('RevertContextMenu')) {
         Write-Output ""
 
-        if ($( Read-Host -Prompt "Do you want to disable any context menu options? (y/n)" ) -eq 'y') {
+        if ($( Read-Host -Prompt "Deseja desativar alguma opcao do menu de contexto? (y/n)" ) -eq 'y') {
             Write-Output ""
 
-            if ($( Read-Host -Prompt "   Hide the 'Include in library' option in the context menu? (y/n)" ) -eq 'y') {
-                AddParameter 'HideIncludeInLibrary' "Hide the 'Include in library' option in the context menu"
+            if ($( Read-Host -Prompt "   Ocultar a opcao 'Incluir na biblioteca' no menu de contexto? (y/n)" ) -eq 'y') {
+                AddParameter 'HideIncludeInLibrary' "Ocultar a opcao 'Incluir na biblioteca' no menu de contexto"
             }
 
             Write-Output ""
 
-            if ($( Read-Host -Prompt "   Hide the 'Give access to' option in the context menu? (y/n)" ) -eq 'y') {
-                AddParameter 'HideGiveAccessTo' "Hide the 'Give access to' option in the context menu"
+            if ($( Read-Host -Prompt "   Ocultar a opcao 'Conceder acesso a' no menu de contexto? (y/n)" ) -eq 'y') {
+                AddParameter 'HideGiveAccessTo' "Ocultar a opcao 'Conceder acesso a' no menu de contexto"
             }
 
             Write-Output ""
 
-            if ($( Read-Host -Prompt "   Hide the 'Share' option in the context menu? (y/n)" ) -eq 'y') {
-                AddParameter 'HideShare' "Hide the 'Share' option in the context menu"
+            if ($( Read-Host -Prompt "   Ocultar a opcao 'Compartilhar' no menu de contexto? (y/n)" ) -eq 'y') {
+                AddParameter 'HideShare' "Ocultar a opcao 'Compartilhar' no menu de contexto"
             }
         }
     }
@@ -1171,31 +1171,31 @@ function DisplayCustomModeOptions {
     if ($WinVersion -ge 22621) {
         Write-Output ""
 
-        if ($( Read-Host -Prompt "Do you want to make any changes to the start menu? (y/n)" ) -eq 'y') {
+        if ($( Read-Host -Prompt "Deseja fazer alteracoes no menu iniciar? (y/n)" ) -eq 'y') {
             Write-Output ""
 
             if ($script:Params.ContainsKey("Sysprep")) {
-                if ($( Read-Host -Prompt "Remove all pinned apps from the start menu for all existing and new users? (y/n)" ) -eq 'y') {
-                    AddParameter 'ClearStartAllUsers' 'Remove all pinned apps from the start menu for existing and new users'
+                if ($( Read-Host -Prompt "Remover todos os apps fixados do menu iniciar para todos os usuarios existentes e novos? (y/n)" ) -eq 'y') {
+                    AddParameter 'ClearStartAllUsers' 'Remover todos os apps fixados do menu iniciar para usuarios existentes e novos'
                 }
             }
             else {
                 Do {
-                    Write-Host "   Options:" -ForegroundColor Yellow
-                    Write-Host "    (n) Don't remove any pinned apps from the start menu" -ForegroundColor Yellow
-                    Write-Host "    (1) Remove all pinned apps from the start menu for this user only ($(GetUserName))" -ForegroundColor Yellow
-                    Write-Host "    (2) Remove all pinned apps from the start menu for all existing and new users"  -ForegroundColor Yellow
-                    $ClearStartInput = Read-Host "   Remove all pinned apps from the start menu? (n/1/2)" 
+                    Write-Host "   Opcoes:" -ForegroundColor Yellow
+                    Write-Host "    (n) Nao remover nenhum app fixado do menu iniciar" -ForegroundColor Yellow
+                    Write-Host "    (1) Remover todos os apps fixados do menu iniciar apenas para este usuario ($(GetUserName))" -ForegroundColor Yellow
+                    Write-Host "    (2) Remover todos os apps fixados do menu iniciar para todos os usuarios existentes e novos"  -ForegroundColor Yellow
+                    $ClearStartInput = Read-Host "   Remover todos os apps fixados do menu iniciar? (n/1/2)" 
                 }
                 while ($ClearStartInput -ne 'n' -and $ClearStartInput -ne '0' -and $ClearStartInput -ne '1' -and $ClearStartInput -ne '2') 
 
                 # Select correct option based on user input
                 switch ($ClearStartInput) {
                     '1' {
-                        AddParameter 'ClearStart' "Remove all pinned apps from the start menu for this user only"
+                        AddParameter 'ClearStart' "Remover todos os apps fixados do menu iniciar apenas para este usuario"
                     }
                     '2' {
-                        AddParameter 'ClearStartAllUsers' "Remove all pinned apps from the start menu for all existing and new users"
+                        AddParameter 'ClearStartAllUsers' "Remover todos os apps fixados do menu iniciar para todos os usuarios existentes e novos"
                     }
                 }
             }
@@ -1204,131 +1204,131 @@ function DisplayCustomModeOptions {
             if ($WinVersion -lt 26200) {
                 Write-Output ""
 
-                if ($( Read-Host -Prompt "   Disable the recommended section in the start menu? This applies to all users (y/n)" ) -eq 'y') {
-                    AddParameter 'DisableStartRecommended' 'Disable the recommended section in the start menu.'
+                if ($( Read-Host -Prompt "   Desativar a secao recomendados no menu iniciar? Isso se aplica a todos os usuarios (y/n)" ) -eq 'y') {
+                    AddParameter 'DisableStartRecommended' 'Desativar a secao recomendados no menu iniciar'
                 }
             }
 
             Write-Output ""
 
-            if ($( Read-Host -Prompt "   Disable the Phone Link mobile devices integration in the start menu? (y/n)" ) -eq 'y') {
-                AddParameter 'DisableStartPhoneLink' 'Disable the Phone Link mobile devices integration in the start menu.'
+            if ($( Read-Host -Prompt "   Desativar a integracao Phone Link de dispositivos moveis no menu iniciar? (y/n)" ) -eq 'y') {
+                AddParameter 'DisableStartPhoneLink' 'Desativar a integracao Phone Link de dispositivos moveis no menu iniciar'
             }
         }
     }
 
     Write-Output ""
 
-    if ($( Read-Host -Prompt "Do you want to make any changes to the taskbar and related services? (y/n)" ) -eq 'y') {
+    if ($( Read-Host -Prompt "Deseja fazer alteracoes na barra de tarefas e servicos relacionados? (y/n)" ) -eq 'y') {
         # Only show these specific options for Windows 11 users running build 22000 or later
         if ($WinVersion -ge 22000) {
             Write-Output ""
 
-            if ($( Read-Host -Prompt "   Align taskbar buttons to the left side? (y/n)" ) -eq 'y') {
-                AddParameter 'TaskbarAlignLeft' 'Align taskbar icons to the left'
+            if ($( Read-Host -Prompt "   Alinhar botoes da barra de tarefas a esquerda? (y/n)" ) -eq 'y') {
+                AddParameter 'TaskbarAlignLeft' 'Alinhar icones da barra de tarefas a esquerda'
             }
 
             # Show options for combine icon on taskbar, only continue on valid input
             Do {
                 Write-Output ""
-                Write-Host "   Options:" -ForegroundColor Yellow
-                Write-Host "    (n) No change" -ForegroundColor Yellow
-                Write-Host "    (1) Always" -ForegroundColor Yellow
-                Write-Host "    (2) When taskbar is full" -ForegroundColor Yellow
-                Write-Host "    (3) Never" -ForegroundColor Yellow
-                $TbCombineTaskbar = Read-Host "   Combine taskbar buttons and hide labels? (n/1/2/3)" 
+                Write-Host "   Opcoes:" -ForegroundColor Yellow
+                Write-Host "    (n) Sem alteracao" -ForegroundColor Yellow
+                Write-Host "    (1) Sempre" -ForegroundColor Yellow
+                Write-Host "    (2) Quando a barra de tarefas estiver cheia" -ForegroundColor Yellow
+                Write-Host "    (3) Nunca" -ForegroundColor Yellow
+                $TbCombineTaskbar = Read-Host "   Combinar botoes da barra de tarefas e ocultar rotulos? (n/1/2/3)" 
             }
             while ($TbCombineTaskbar -ne 'n' -and $TbCombineTaskbar -ne '0' -and $TbCombineTaskbar -ne '1' -and $TbCombineTaskbar -ne '2' -and $TbCombineTaskbar -ne '3') 
 
             # Select correct taskbar goup option based on user input
             switch ($TbCombineTaskbar) {
                 '1' {
-                    AddParameter 'CombineTaskbarAlways' 'Always combine taskbar buttons and hide labels for the main display'
-                    AddParameter 'CombineMMTaskbarAlways' 'Always combine taskbar buttons and hide labels for secondary displays'
+                    AddParameter 'CombineTaskbarAlways' 'Sempre combinar botoes da barra de tarefas e ocultar rotulos para o monitor principal'
+                    AddParameter 'CombineMMTaskbarAlways' 'Sempre combinar botoes da barra de tarefas e ocultar rotulos para monitores secundarios'
                 }
                 '2' {
-                    AddParameter 'CombineTaskbarWhenFull' 'Combine taskbar buttons and hide labels when taskbar is full for the main display'
-                    AddParameter 'CombineMMTaskbarWhenFull' 'Combine taskbar buttons and hide labels when taskbar is full for secondary displays'
+                    AddParameter 'CombineTaskbarWhenFull' 'Combinar botoes da barra de tarefas e ocultar rotulos quando a barra estiver cheia para o monitor principal'
+                    AddParameter 'CombineMMTaskbarWhenFull' 'Combinar botoes da barra de tarefas e ocultar rotulos quando a barra estiver cheia para monitores secundarios'
                 }
                 '3' {
-                    AddParameter 'CombineTaskbarNever' 'Never combine taskbar buttons and show labels for the main display'
-                    AddParameter 'CombineMMTaskbarNever' 'Never combine taskbar buttons and show labels for secondary displays'
+                    AddParameter 'CombineTaskbarNever' 'Nunca combinar botoes da barra de tarefas e mostrar rotulos para o monitor principal'
+                    AddParameter 'CombineMMTaskbarNever' 'Nunca combinar botoes da barra de tarefas e mostrar rotulos para monitores secundarios'
                 }
             }
 
             # Show options for changing on what taskbar(s) app icons are shown, only continue on valid input
             Do {
                 Write-Output ""
-                Write-Host "   Options:" -ForegroundColor Yellow
-                Write-Host "    (n) No change" -ForegroundColor Yellow
-                Write-Host "    (1) Show app icons on all taskbars" -ForegroundColor Yellow
-                Write-Host "    (2) Show app icons on main taskbar and on taskbar where the windows is open" -ForegroundColor Yellow
-                Write-Host "    (3) Show app icons only on taskbar where the window is open" -ForegroundColor Yellow
-                $TbCombineTaskbar = Read-Host "   Change how to show app icons on the taskbar when using multiple monitors? (n/1/2/3)" 
+                Write-Host "   Opcoes:" -ForegroundColor Yellow
+                Write-Host "    (n) Sem alteracao" -ForegroundColor Yellow
+                Write-Host "    (1) Mostrar icones de apps em todas as barras de tarefas" -ForegroundColor Yellow
+                Write-Host "    (2) Mostrar icones de apps na barra principal e na barra onde a janela esta aberta" -ForegroundColor Yellow
+                Write-Host "    (3) Mostrar icones de apps apenas na barra de tarefas onde a janela esta aberta" -ForegroundColor Yellow
+                $TbCombineTaskbar = Read-Host "   Alterar como mostrar icones de apps na barra de tarefas ao usar multiplos monitores? (n/1/2/3)" 
             }
             while ($TbCombineTaskbar -ne 'n' -and $TbCombineTaskbar -ne '0' -and $TbCombineTaskbar -ne '1' -and $TbCombineTaskbar -ne '2' -and $TbCombineTaskbar -ne '3') 
 
             # Select correct taskbar goup option based on user input
             switch ($TbCombineTaskbar) {
                 '1' {
-                    AddParameter 'MMTaskbarModeAll' 'Show app icons on all taskbars'
+                    AddParameter 'MMTaskbarModeAll' 'Mostrar icones de apps em todas as barras de tarefas'
                 }
                 '2' {
-                    AddParameter 'MMTaskbarModeMainActive' 'Show app icons on main taskbar and on taskbar where the windows is open'
+                    AddParameter 'MMTaskbarModeMainActive' 'Mostrar icones de apps na barra principal e na barra onde a janela esta aberta'
                 }
                 '3' {
-                    AddParameter 'MMTaskbarModeActive' 'Show app icons only on taskbar where the window is open'
+                    AddParameter 'MMTaskbarModeActive' 'Mostrar icones de apps apenas na barra de tarefas onde a janela esta aberta'
                 }
             }
 
             # Show options for search icon on taskbar, only continue on valid input
             Do {
                 Write-Output ""
-                Write-Host "   Options:" -ForegroundColor Yellow
-                Write-Host "    (n) No change" -ForegroundColor Yellow
-                Write-Host "    (1) Hide search icon from the taskbar" -ForegroundColor Yellow
-                Write-Host "    (2) Show search icon on the taskbar" -ForegroundColor Yellow
-                Write-Host "    (3) Show search icon with label on the taskbar" -ForegroundColor Yellow
-                Write-Host "    (4) Show search box on the taskbar" -ForegroundColor Yellow
-                $TbSearchInput = Read-Host "   Hide or change the search icon on the taskbar? (n/1/2/3/4)" 
+                Write-Host "   Opcoes:" -ForegroundColor Yellow
+                Write-Host "    (n) Sem alteracao" -ForegroundColor Yellow
+                Write-Host "    (1) Ocultar icone de pesquisa da barra de tarefas" -ForegroundColor Yellow
+                Write-Host "    (2) Mostrar icone de pesquisa na barra de tarefas" -ForegroundColor Yellow
+                Write-Host "    (3) Mostrar icone de pesquisa com rotulo na barra de tarefas" -ForegroundColor Yellow
+                Write-Host "    (4) Mostrar caixa de pesquisa na barra de tarefas" -ForegroundColor Yellow
+                $TbSearchInput = Read-Host "   Ocultar ou alterar o icone de pesquisa na barra de tarefas? (n/1/2/3/4)" 
             }
             while ($TbSearchInput -ne 'n' -and $TbSearchInput -ne '0' -and $TbSearchInput -ne '1' -and $TbSearchInput -ne '2' -and $TbSearchInput -ne '3' -and $TbSearchInput -ne '4') 
 
             # Select correct taskbar search option based on user input
             switch ($TbSearchInput) {
                 '1' {
-                    AddParameter 'HideSearchTb' 'Hide search icon from the taskbar'
+                    AddParameter 'HideSearchTb' 'Ocultar icone de pesquisa da barra de tarefas'
                 }
                 '2' {
-                    AddParameter 'ShowSearchIconTb' 'Show search icon on the taskbar'
+                    AddParameter 'ShowSearchIconTb' 'Mostrar icone de pesquisa na barra de tarefas'
                 }
                 '3' {
-                    AddParameter 'ShowSearchLabelTb' 'Show search icon with label on the taskbar'
+                    AddParameter 'ShowSearchLabelTb' 'Mostrar icone de pesquisa com rotulo na barra de tarefas'
                 }
                 '4' {
-                    AddParameter 'ShowSearchBoxTb' 'Show search box on the taskbar'
+                    AddParameter 'ShowSearchBoxTb' 'Mostrar caixa de pesquisa na barra de tarefas'
                 }
             }
 
             Write-Output ""
 
-            if ($( Read-Host -Prompt "   Hide the taskview button from the taskbar? (y/n)" ) -eq 'y') {
-                AddParameter 'HideTaskview' 'Hide the taskview button from the taskbar'
+            if ($( Read-Host -Prompt "   Ocultar o botao de visao de tarefas da barra de tarefas? (y/n)" ) -eq 'y') {
+                AddParameter 'HideTaskview' 'Ocultar o botao de visao de tarefas da barra de tarefas'
             }
         }
 
         Write-Output ""
 
-        if ($( Read-Host -Prompt "   Disable the widgets service to remove widgets on the taskbar & lockscreen? (y/n)" ) -eq 'y') {
-            AddParameter 'DisableWidgets' 'Disable widgets on the taskbar & lockscreen'
+        if ($( Read-Host -Prompt "   Desativar o servico de widgets para remover widgets na barra de tarefas e tela de bloqueio? (y/n)" ) -eq 'y') {
+            AddParameter 'DisableWidgets' 'Desativar widgets na barra de tarefas e tela de bloqueio'
         }
 
         # Only show this options for Windows users running build 22621 or earlier
         if ($WinVersion -le 22621) {
             Write-Output ""
 
-            if ($( Read-Host -Prompt "   Hide the chat (meet now) icon from the taskbar? (y/n)" ) -eq 'y') {
-                AddParameter 'HideChat' 'Hide the chat (meet now) icon from the taskbar'
+            if ($( Read-Host -Prompt "   Ocultar o icone de chat (meet now) da barra de tarefas? (y/n)" ) -eq 'y') {
+                AddParameter 'HideChat' 'Ocultar o icone de chat (meet now) da barra de tarefas'
             }
         }
         
@@ -1336,103 +1336,103 @@ function DisplayCustomModeOptions {
         if ($WinVersion -ge 22631) {
             Write-Output ""
 
-            if ($( Read-Host -Prompt "   Enable the 'End Task' option in the taskbar right click menu? (y/n)" ) -eq 'y') {
-                AddParameter 'EnableEndTask' "Enable the 'End Task' option in the taskbar right click menu"
+            if ($( Read-Host -Prompt "   Ativar a opcao 'Encerrar Tarefa' no menu de clique direito da barra de tarefas? (y/n)" ) -eq 'y') {
+                AddParameter 'EnableEndTask' "Ativar a opcao 'Encerrar Tarefa' no menu de clique direito da barra de tarefas"
             }
         }
         
         Write-Output ""
-        if ($( Read-Host -Prompt "   Enable the 'Last Active Click' behavior in the taskbar app area? (y/n)" ) -eq 'y') {
-            AddParameter 'EnableLastActiveClick' "Enable the 'Last Active Click' behavior in the taskbar app area"
+        if ($( Read-Host -Prompt "   Ativar o comportamento 'Ultimo Clique Ativo' na area de apps da barra de tarefas? (y/n)" ) -eq 'y') {
+            AddParameter 'EnableLastActiveClick' "Ativar o comportamento 'Ultimo Clique Ativo' na area de apps da barra de tarefas"
         }
     }
 
     Write-Output ""
 
-    if ($( Read-Host -Prompt "Do you want to make any changes to File Explorer? (y/n)" ) -eq 'y') {
+    if ($( Read-Host -Prompt "Deseja fazer alteracoes no Explorador de Arquivos? (y/n)" ) -eq 'y') {
         # Show options for changing the File Explorer default location
         Do {
             Write-Output ""
-            Write-Host "   Options:" -ForegroundColor Yellow
-            Write-Host "    (n) No change" -ForegroundColor Yellow
-            Write-Host "    (1) Open File Explorer to 'Home'" -ForegroundColor Yellow
-            Write-Host "    (2) Open File Explorer to 'This PC'" -ForegroundColor Yellow
-            Write-Host "    (3) Open File Explorer to 'Downloads'" -ForegroundColor Yellow
-            Write-Host "    (4) Open File Explorer to 'OneDrive'" -ForegroundColor Yellow
-            $ExplSearchInput = Read-Host "   Change the default location that File Explorer opens to? (n/1/2/3/4)" 
+            Write-Host "   Opcoes:" -ForegroundColor Yellow
+            Write-Host "    (n) Sem alteracao" -ForegroundColor Yellow
+            Write-Host "    (1) Abrir Explorador de Arquivos em 'Inicio'" -ForegroundColor Yellow
+            Write-Host "    (2) Abrir Explorador de Arquivos em 'Este PC'" -ForegroundColor Yellow
+            Write-Host "    (3) Abrir Explorador de Arquivos em 'Downloads'" -ForegroundColor Yellow
+            Write-Host "    (4) Abrir Explorador de Arquivos em 'OneDrive'" -ForegroundColor Yellow
+            $ExplSearchInput = Read-Host "   Alterar o local padrao onde o Explorador de Arquivos abre? (n/1/2/3/4)" 
         }
         while ($ExplSearchInput -ne 'n' -and $ExplSearchInput -ne '0' -and $ExplSearchInput -ne '1' -and $ExplSearchInput -ne '2' -and $ExplSearchInput -ne '3' -and $ExplSearchInput -ne '4') 
 
         # Select correct taskbar search option based on user input
         switch ($ExplSearchInput) {
             '1' {
-                AddParameter 'ExplorerToHome' "Change the default location that File Explorer opens to 'Home'"
+                AddParameter 'ExplorerToHome' "Alterar o local padrao do Explorador de Arquivos para 'Inicio'"
             }
             '2' {
-                AddParameter 'ExplorerToThisPC' "Change the default location that File Explorer opens to 'This PC'"
+                AddParameter 'ExplorerToThisPC' "Alterar o local padrao do Explorador de Arquivos para 'Este PC'"
             }
             '3' {
-                AddParameter 'ExplorerToDownloads' "Change the default location that File Explorer opens to 'Downloads'"
+                AddParameter 'ExplorerToDownloads' "Alterar o local padrao do Explorador de Arquivos para 'Downloads'"
             }
             '4' {
-                AddParameter 'ExplorerToOneDrive' "Change the default location that File Explorer opens to 'OneDrive'"
+                AddParameter 'ExplorerToOneDrive' "Alterar o local padrao do Explorador de Arquivos para 'OneDrive'"
             }
         }
 
         Write-Output ""
 
-        if ($( Read-Host -Prompt "   Show hidden files, folders and drives? (y/n)" ) -eq 'y') {
-            AddParameter 'ShowHiddenFolders' 'Show hidden files, folders and drives'
+        if ($( Read-Host -Prompt "   Mostrar arquivos, pastas e unidades ocultas? (y/n)" ) -eq 'y') {
+            AddParameter 'ShowHiddenFolders' 'Mostrar arquivos, pastas e unidades ocultas'
         }
 
         Write-Output ""
 
-        if ($( Read-Host -Prompt "   Show file extensions for known file types? (y/n)" ) -eq 'y') {
-            AddParameter 'ShowKnownFileExt' 'Show file extensions for known file types'
+        if ($( Read-Host -Prompt "   Mostrar extensoes de arquivo para tipos conhecidos? (y/n)" ) -eq 'y') {
+            AddParameter 'ShowKnownFileExt' 'Mostrar extensoes de arquivo para tipos conhecidos'
         }
 
         # Only show this option for Windows 11 users running build 22000 or later
         if ($WinVersion -ge 22000) {
             Write-Output ""
 
-            if ($( Read-Host -Prompt "   Hide the Home section from the File Explorer sidepanel? (y/n)" ) -eq 'y') {
-                AddParameter 'HideHome' 'Hide the Home section from the File Explorer sidepanel'
+            if ($( Read-Host -Prompt "   Ocultar a secao Inicio do painel lateral do Explorador de Arquivos? (y/n)" ) -eq 'y') {
+                AddParameter 'HideHome' 'Ocultar a secao Inicio do painel de navegacao do Explorador de Arquivos'
             }
 
             Write-Output ""
 
-            if ($( Read-Host -Prompt "   Hide the Gallery section from the File Explorer sidepanel? (y/n)" ) -eq 'y') {
-                AddParameter 'HideGallery' 'Hide the Gallery section from the File Explorer sidepanel'
+            if ($( Read-Host -Prompt "   Ocultar a secao Galeria do painel lateral do Explorador de Arquivos? (y/n)" ) -eq 'y') {
+                AddParameter 'HideGallery' 'Ocultar a secao Galeria do painel de navegacao do Explorador de Arquivos'
             }
         }
 
         Write-Output ""
 
-        if ($( Read-Host -Prompt "   Hide duplicate removable drive entries from the File Explorer sidepanel so they only show under This PC? (y/n)" ) -eq 'y') {
-            AddParameter 'HideDupliDrive' 'Hide duplicate removable drive entries from the File Explorer sidepanel'
+        if ($( Read-Host -Prompt "   Ocultar entradas duplicadas de unidades removiveis do painel lateral para que aparecam apenas em Este PC? (y/n)" ) -eq 'y') {
+            AddParameter 'HideDupliDrive' 'Ocultar entradas duplicadas de unidades removiveis do painel de navegacao do Explorador de Arquivos'
         }
 
         # Only show option for disabling these specific folders for Windows 10 users
         if (get-ciminstance -query "select caption from win32_operatingsystem where caption like '%Windows 10%'") {
             Write-Output ""
 
-            if ($( Read-Host -Prompt "Do you want to hide any folders from the File Explorer sidepanel? (y/n)" ) -eq 'y') {
+            if ($( Read-Host -Prompt "Deseja ocultar alguma pasta do painel lateral do Explorador de Arquivos? (y/n)" ) -eq 'y') {
                 Write-Output ""
 
-                if ($( Read-Host -Prompt "   Hide the OneDrive folder from the File Explorer sidepanel? (y/n)" ) -eq 'y') {
-                    AddParameter 'HideOnedrive' 'Hide the OneDrive folder in the File Explorer sidepanel'
+                if ($( Read-Host -Prompt "   Ocultar a pasta OneDrive do painel lateral do Explorador de Arquivos? (y/n)" ) -eq 'y') {
+                    AddParameter 'HideOnedrive' 'Ocultar a pasta OneDrive no painel lateral do Explorador de Arquivos'
                 }
 
                 Write-Output ""
                 
-                if ($( Read-Host -Prompt "   Hide the 3D objects folder from the File Explorer sidepanel? (y/n)" ) -eq 'y') {
-                    AddParameter 'Hide3dObjects' "Hide the 3D objects folder under 'This pc' in File Explorer" 
+                if ($( Read-Host -Prompt "   Ocultar a pasta Objetos 3D do painel lateral do Explorador de Arquivos? (y/n)" ) -eq 'y') {
+                    AddParameter 'Hide3dObjects' "Ocultar a pasta Objetos 3D em 'Este PC' no Explorador de Arquivos" 
                 }
                 
                 Write-Output ""
 
-                if ($( Read-Host -Prompt "   Hide the music folder from the File Explorer sidepanel? (y/n)" ) -eq 'y') {
-                    AddParameter 'HideMusic' "Hide the music folder under 'This pc' in File Explorer"
+                if ($( Read-Host -Prompt "   Ocultar a pasta Musica do painel lateral do Explorador de Arquivos? (y/n)" ) -eq 'y') {
+                    AddParameter 'HideMusic' "Ocultar a pasta Musica em 'Este PC' no Explorador de Arquivos"
                 }
             }
         }
