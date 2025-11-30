@@ -1,18 +1,29 @@
-1.0.0-ptbr
+1.1.0-ptbr
 
-# Histórico de Versões - Win11Debloat PT-BR
+# Historico de Versoes - Win11Debloat PT-BR
 # ==========================================
 # Autor Original: Raphire (https://github.com/Raphire)
-# Tradução e Customização: Arnaldo Lima (https://arnaldolima.com)
+# Traducao e Customizacao: Arnaldo Lima (https://arnaldolima.com)
 # ==========================================
 
+## v1.1.0-ptbr (30/11/2025)
+- Traducao completa do script principal Win11Debloat.ps1
+- Menu principal totalmente em PT-BR
+- Modo Padrao traduzido
+- Modo Personalizado traduzido (todas as opcoes)
+- Modo Remocao de Apps traduzido
+- Formulario de selecao de apps traduzido (Windows Forms)
+- Configuracoes salvas traduzidas
+- Script usa ListaApps.txt como padrao (com fallback para Appslist.txt)
+- Corrigido problema de encoding (removidos acentos)
+
 ## v1.0.0-ptbr (29/11/2025)
-- Tradução completa para Português Brasil
-- Documentação detalhada em PT-BR
+- Traducao inicial para Portugues Brasil
+- Documentacao detalhada em PT-BR
 - Arquivo de idioma (Lang/pt-BR.psd1)
 - Lista de apps traduzida (ListaApps.txt)
 - Menus traduzidos (Assets/Menus/)
-- Script de execução PT-BR (Executar.bat)
-- Análise técnica completa
-- Guia de reversão
+- Script de execucao PT-BR (Executar.bat)
+- Analise tecnica completa
+- Guia de reversao
 - Guia de funcionalidades

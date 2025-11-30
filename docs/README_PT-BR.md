@@ -1,6 +1,6 @@
-# Win11Debloat - Versão Português Brasil
+# Win11Debloat - Versao Portugues Brasil
 
-[![Versão](https://img.shields.io/badge/Versão-2025.11.29-blue?style=for-the-badge)](https://github.com/Raphire/Win11Debloat)
+[![Versão](https://img.shields.io/badge/Versão-1.1.0--ptbr-blue?style=for-the-badge)](https://github.com/Raphire/Win11Debloat)
 [![Licença](https://img.shields.io/badge/Licença-MIT-green?style=for-the-badge)](../LICENSE)
 [![Windows 11](https://img.shields.io/badge/Windows-11-0078D6?style=for-the-badge&logo=windows)](https://www.microsoft.com/windows/windows-11)
 [![Windows 10](https://img.shields.io/badge/Windows-10-0078D6?style=for-the-badge&logo=windows)](https://www.microsoft.com/windows)
