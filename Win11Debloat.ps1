@@ -1563,23 +1563,23 @@ if ((-not $script:Params.Count) -or $RunDefaults -or $RunDefaultsLite -or $RunSa
     else {
         # Show menu and wait for user input, loops until valid input is provided
         Do { 
-            $ModeSelectionMessage = (Get-LocalizedString "MenuPrompt" "Por favor, selecione uma opção") + " (1/2/3/0)"
+            $ModeSelectionMessage = (Get-LocalizedString "MenuPrompt" "Por favor, selecione uma opcao") + " (1/2/3/0)"
 
             PrintHeader 'Menu'
 
-            Write-Output (Get-LocalizedString "MenuOption1" "(1) Modo Padrão: Aplica rapidamente as alterações recomendadas")
-            Write-Output (Get-LocalizedString "MenuOption2" "(2) Modo Personalizado: Selecione manualmente as alterações")
-            Write-Output (Get-LocalizedString "MenuOption3" "(3) Modo Remoção de Apps: Selecione e remova apps sem outras alterações")
+            Write-Output (Get-LocalizedString "MenuOption1" "(1) Modo Padrao: Aplica rapidamente as alteracoes recomendadas")
+            Write-Output (Get-LocalizedString "MenuOption2" "(2) Modo Personalizado: Selecione manualmente as alteracoes")
+            Write-Output (Get-LocalizedString "MenuOption3" "(3) Modo Remocao de Apps: Selecione e remova apps sem outras alteracoes")
 
             # Only show this option if SavedSettings file exists
             if (Test-Path "$PSScriptRoot/SavedSettings") {
-                Write-Output (Get-LocalizedString "MenuOption4" "(4) Aplicar configurações salvas da última execução")
+                Write-Output (Get-LocalizedString "MenuOption4" "(4) Aplicar configuracoes salvas da ultima execucao")
                 
-                $ModeSelectionMessage = (Get-LocalizedString "MenuPrompt" "Por favor, selecione uma opção") + " (1/2/3/4/0)"
+                $ModeSelectionMessage = (Get-LocalizedString "MenuPrompt" "Por favor, selecione uma opcao") + " (1/2/3/4/0)"
             }
 
             Write-Output ""
-            Write-Output (Get-LocalizedString "MenuOption0" "(0) Mostrar mais informações")
+            Write-Output (Get-LocalizedString "MenuOption0" "(0) Mostrar mais informacoes")
             Write-Output ""
             Write-Output ""
 
@@ -1589,7 +1589,7 @@ if ((-not $script:Params.Count) -or $RunDefaults -or $RunDefaultsLite -or $RunSa
                 # Print information screen from file - tenta PT-BR primeiro
                 $infoFile = "$PSScriptRoot/Assets/Menus/Informacoes"
                 if (-not (Test-Path $infoFile)) { $infoFile = "$PSScriptRoot/Assets/Menus/Info" }
-                PrintFromFile $infoFile "Informações"
+                PrintFromFile $infoFile "Informacoes"
 
                 Write-Output (Get-LocalizedString "PressAnyKeyToContinue" "Pressione qualquer tecla para continuar...")
                 $null = [System.Console]::ReadKey()
@@ -1605,23 +1605,23 @@ if ((-not $script:Params.Count) -or $RunDefaults -or $RunDefaultsLite -or $RunSa
     switch ($Mode) {
         # Default mode, loads defaults after confirmation
         '1' { 
-            AddParameter 'CreateRestorePoint' (Get-LocalizedString "ActionCreateRestorePoint" 'Criar um ponto de restauração do sistema') $false
+            AddParameter 'CreateRestorePoint' (Get-LocalizedString "ActionCreateRestorePoint" 'Criar um ponto de restauracao do sistema') $false
 
             # Show the default settings with confirmation, unless Silent parameter was passed
             if (-not $Silent) {
                 # Show options for app removal
                 if ((-not $RunDefaults) -and (-not $RunDefaultsLite)) {
-                    PrintHeader (Get-LocalizedString "DefaultModeTitle" 'Modo Padrão')
+                    PrintHeader (Get-LocalizedString "DefaultModeTitle" 'Modo Padrao')
 
-                    Write-Host (Get-LocalizedString "DefaultModeNote" "Nota: A seleção padrão de apps inclui Microsoft Teams, Spotify, Sticky Notes e mais. Selecione a opção 2 para verificar e alterar quais apps são removidos pelo script.") -ForegroundColor DarkGray
+                    Write-Host (Get-LocalizedString "DefaultModeNote" "Nota: A selecao padrao de apps inclui Microsoft Teams, Spotify, Sticky Notes e mais. Selecione a opcao 2 para verificar e alterar quais apps sao removidos pelo script.") -ForegroundColor DarkGray
                     Write-Output ""
 
                     Do {
-                        Write-Host (Get-LocalizedString "AppRemovalOptions" "Opções:") -ForegroundColor Yellow
-                        Write-Host (Get-LocalizedString "AppRemovalOptionN" " (n) Não remover nenhum app") -ForegroundColor Yellow
-                        Write-Host (Get-LocalizedString "AppRemovalOption1" " (1) Remover apenas a seleção padrão de apps") -ForegroundColor Yellow
+                        Write-Host (Get-LocalizedString "AppRemovalOptions" "Opcoes:") -ForegroundColor Yellow
+                        Write-Host (Get-LocalizedString "AppRemovalOptionN" " (n) Nao remover nenhum app") -ForegroundColor Yellow
+                        Write-Host (Get-LocalizedString "AppRemovalOption1" " (1) Remover apenas a selecao padrao de apps") -ForegroundColor Yellow
                         Write-Host (Get-LocalizedString "AppRemovalOption2" " (2) Selecionar manualmente quais apps remover") -ForegroundColor Yellow
-                        $RemoveAppsInput = Read-Host (Get-LocalizedString "AppRemovalPrompt" "Deseja remover algum app? Apps serão removidos para todos os usuários (n/1/2)")
+                        $RemoveAppsInput = Read-Host (Get-LocalizedString "AppRemovalPrompt" "Deseja remover algum app? Apps serao removidos para todos os usuarios (n/1/2)")
                 
                         # Show app selection form if user entered option 3
                         if ($RemoveAppsInput -eq '2') {
@@ -1630,7 +1630,7 @@ if ((-not $script:Params.Count) -or $RunDefaults -or $RunDefaultsLite -or $RunSa
                             if ($result -ne [System.Windows.Forms.DialogResult]::OK) {
                                 # User cancelled or closed app selection, show error and change RemoveAppsInput so the menu will be shown again
                                 Write-Output ""
-                                Write-Host (Get-LocalizedString "AppSelectionCancelled" "Seleção de aplicativos cancelada, por favor tente novamente") -ForegroundColor Red
+                                Write-Host (Get-LocalizedString "AppSelectionCancelled" "Selecao de aplicativos cancelada, por favor tente novamente") -ForegroundColor Red
                 
                                 $RemoveAppsInput = 'c'
                             }
@@ -1645,14 +1645,14 @@ if ((-not $script:Params.Count) -or $RunDefaults -or $RunDefaultsLite -or $RunSa
                     $RemoveAppsInput = '1'
                 }
 
-                PrintHeader (Get-LocalizedString "DefaultModeTitle" 'Modo Padrão')
+                PrintHeader (Get-LocalizedString "DefaultModeTitle" 'Modo Padrao')
 
-                Write-Output (Get-LocalizedString "DefaultModeChanges" "Win11Debloat fará as seguintes alterações:")
+                Write-Output (Get-LocalizedString "DefaultModeChanges" "Win11Debloat fara as seguintes alteracoes:")
     
                 # Select correct option based on user input
                 switch ($RemoveAppsInput) {
                     '1' {
-                        AddParameter 'RemoveApps' (Get-LocalizedString "ActionRemoveApps" 'Remover a seleção padrão de apps:') $false
+                        AddParameter 'RemoveApps' (Get-LocalizedString "ActionRemoveApps" 'Remover a selecao padrao de apps:') $false
                         # Tenta usar lista PT-BR primeiro
                         $appsList = "$PSScriptRoot/ListaApps.txt"
                         if (-not (Test-Path $appsList)) { $appsList = "$PSScriptRoot/Appslist.txt" }
@@ -1667,7 +1667,7 @@ if ((-not $script:Params.Count) -or $RunDefaults -or $RunDefaultsLite -or $RunSa
                  # Only add this option for Windows 10 users
                 if (get-ciminstance -query "select caption from win32_operatingsystem where caption like '%Windows 10%'") {
                     AddParameter 'Hide3dObjects' (Get-LocalizedString "ActionHide3DObjects" "Ocultar a pasta Objetos 3D em 'Este PC' no Explorador de Arquivos") $false
-                    AddParameter 'HideChat' (Get-LocalizedString "ActionHideChat" 'Ocultar o ícone de chat (meet now) da barra de tarefas') $false
+                    AddParameter 'HideChat' (Get-LocalizedString "ActionHideChat" 'Ocultar o icone de chat (meet now) da barra de tarefas') $false
                 }
 
                 # Only add these options for Windows 11 users (build 22000+)
@@ -1677,13 +1677,13 @@ if ((-not $script:Params.Count) -or $RunDefaults -or $RunDefaultsLite -or $RunSa
                     }
 
                     AddParameter 'DisableRecall' (Get-LocalizedString "ActionDisableRecall" 'Desativar Windows Recall') $false
-                    AddParameter 'DisableClickToDo' (Get-LocalizedString "ActionDisableClickToDo" 'Desativar Click to Do (análise de texto e imagem por IA)') $false
+                    AddParameter 'DisableClickToDo' (Get-LocalizedString "ActionDisableClickToDo" 'Desativar Click to Do (analise de texto e imagem por IA)') $false
                 } 
 
                 # Tenta usar arquivo PT-BR primeiro
                 $defaultSettingsFile = "$PSScriptRoot/Assets/Menus/ConfiguracoesPadrao"
                 if (-not (Test-Path $defaultSettingsFile)) { $defaultSettingsFile = "$PSScriptRoot/Assets/Menus/DefaultSettings" }
-                PrintFromFile $defaultSettingsFile (Get-LocalizedString "DefaultModeTitle" "Modo Padrão") $false
+                PrintFromFile $defaultSettingsFile (Get-LocalizedString "DefaultModeTitle" "Modo Padrao") $false
         
                 Write-Output (Get-LocalizedString "PressEnterToExecute" "Pressione Enter para executar o script ou pressione CTRL+C para sair...")
                 Read-Host | Out-Null
@@ -1782,7 +1782,7 @@ else {
 # If the number of keys in SPParams equals the number of keys in Params then no modifications/changes were selected
 #  or added by the user, and the script can exit without making any changes.
 if ($SPParamCount -eq $script:Params.Keys.Count) {
-    Write-Output (Get-LocalizedString "NoChangesMessage" "O script foi concluído sem fazer nenhuma alteração.")
+    Write-Output (Get-LocalizedString "NoChangesMessage" "O script foi concluido sem fazer nenhuma alteracao.")
 
     AwaitKeyToExit
 }
@@ -2118,6 +2118,6 @@ RestartExplorer
 Write-Output ""
 Write-Output ""
 Write-Output ""
-Write-Output (Get-LocalizedString "ScriptCompleted" "Script concluído! Por favor, verifique acima se há erros.")
+Write-Output (Get-LocalizedString "ScriptCompleted" "Script concluido! Por favor, verifique acima se ha erros.")
 
 AwaitKeyToExit
