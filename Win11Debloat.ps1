@@ -216,8 +216,9 @@ function ShowAppSelectionForm {
         # Clear selectionBox before adding any new items
         $selectionBox.Items.Clear()
 
-        # Set filePath where Appslist can be found
-        $appsFile = "$PSScriptRoot/Appslist.txt"
+        # Set filePath where Appslist can be found - tenta PT-BR primeiro
+        $appsFile = "$PSScriptRoot/ListaApps.txt"
+        if (-not (Test-Path $appsFile)) { $appsFile = "$PSScriptRoot/Appslist.txt" }
         $listOfApps = ""
 
         if ($onlyInstalledCheckBox.Checked -and ($script:wingetInstalled -eq $true)) {
@@ -1708,33 +1709,33 @@ if ((-not $script:Params.Count) -or $RunDefaults -or $RunDefaultsLite -or $RunSa
 
         # App removal, remove apps based on user selection
         '3' {
-            PrintHeader "App Removal"
+            PrintHeader "Remocao de Apps"
 
             $result = ShowAppSelectionForm
 
             if ($result -eq [System.Windows.Forms.DialogResult]::OK) {
-                Write-Output "You have selected $($script:SelectedApps.Count) apps for removal"
-                AddParameter 'RemoveAppsCustom' "Remove $($script:SelectedApps.Count) apps:"
+                Write-Output "Voce selecionou $($script:SelectedApps.Count) apps para remocao"
+                AddParameter 'RemoveAppsCustom' "Remover $($script:SelectedApps.Count) apps:"
 
                 # Suppress prompt if Silent parameter was passed
                 if (-not $Silent) {
                     Write-Output ""
                     Write-Output ""
-                    Write-Output "Press enter to remove the selected apps or press CTRL+C to quit..."
+                    Write-Output "Pressione Enter para remover os apps selecionados ou pressione CTRL+C para sair..."
                     Read-Host | Out-Null
-                    PrintHeader "App Removal"
+                    PrintHeader "Remocao de Apps"
                 }
             }
             else {
-                Write-Host "Selection was cancelled, no apps have been removed" -ForegroundColor Red
+                Write-Host "Selecao cancelada, nenhum app foi removido" -ForegroundColor Red
                 Write-Output ""
             }
         }
 
         # Load custom options from the "SavedSettings" file
         '4' {
-            PrintHeader 'Custom Mode'
-            Write-Output "Win11Debloat will make the following changes:"
+            PrintHeader 'Modo Personalizado'
+            Write-Output "Win11Debloat fara as seguintes alteracoes:"
 
             # Print the saved settings info from file
             Foreach ($line in (Get-Content -Path "$PSScriptRoot/SavedSettings" )) { 
@@ -1748,7 +1749,9 @@ if ((-not $script:Params.Count) -or $RunDefaults -or $RunDefaultsLite -or $RunSa
                     # Print parameter description and add parameter to Params list
                     switch ($parameterName) {
                         'RemoveApps' {
-                            PrintAppsList "$PSScriptRoot/Appslist.txt" $true
+                            $appsListFile = "$PSScriptRoot/ListaApps.txt"
+                            if (-not (Test-Path $appsListFile)) { $appsListFile = "$PSScriptRoot/Appslist.txt" }
+                            PrintAppsList $appsListFile $true
                         }
                         'RemoveAppsCustom' {
                             PrintAppsList "$PSScriptRoot/CustomAppsList" $true
@@ -1767,7 +1770,7 @@ if ((-not $script:Params.Count) -or $RunDefaults -or $RunDefaultsLite -or $RunSa
             if (-not $Silent) {
                 Write-Output ""
                 Write-Output ""
-                Write-Output "Press enter to execute the script or press CTRL+C to quit..."
+                Write-Output "Pressione Enter para executar o script ou pressione CTRL+C para sair..."
                 Read-Host | Out-Null
             }
 
@@ -1794,8 +1797,10 @@ switch ($script:Params.Keys) {
         continue
     }
     'RemoveApps' {
-        $appsList = ReadAppslistFromFile "$PSScriptRoot/Appslist.txt" 
-        Write-Output "> Removing default selection of $($appsList.Count) apps..."
+        $appsListFile = "$PSScriptRoot/ListaApps.txt"
+        if (-not (Test-Path $appsListFile)) { $appsListFile = "$PSScriptRoot/Appslist.txt" }
+        $appsList = ReadAppslistFromFile $appsListFile
+        Write-Output "> Removendo selecao padrao de $($appsList.Count) apps..."
         RemoveApps $appsList
         continue
     }
