@@ -1,0 +1,152 @@
+# -------------------------------------------------------------------------------------------------------------- #
+#  Os apps abaixo desta linha SERÃO desinstalados por padrão. Adicione um caractere # na frente de qualquer    #
+#  app que você deseja MANTER instalado por padrão.                                                            #
+# -------------------------------------------------------------------------------------------------------------- #
+Clipchamp.Clipchamp                            # Editor de vídeo da Microsoft
+Microsoft.3DBuilder                            # Software básico de modelagem 3D
+Microsoft.549981C3F5F10                        # App Cortana (Assistente de voz)
+Microsoft.BingFinance                          # Notícias financeiras via Bing (Descontinuado)
+Microsoft.BingFoodAndDrink                     # Receitas e notícias de comida via Bing (Descontinuado)
+Microsoft.BingHealthAndFitness                 # Rastreamento de saúde/fitness via Bing (Descontinuado)
+Microsoft.BingNews                             # Agregador de notícias via Bing (Substituído por Microsoft News/Start)
+Microsoft.BingSports                           # Notícias esportivas via Bing (Descontinuado)
+Microsoft.BingTranslator                       # Serviço de tradução via Bing
+Microsoft.BingTravel                           # Planejamento de viagens via Bing (Descontinuado)
+Microsoft.BingWeather                          # Previsão do tempo via Bing
+Microsoft.Copilot                              # Assistente de IA integrado ao Windows
+Microsoft.Getstarted                           # Dicas e guia introdutório do Windows (Não pode ser desinstalado no Windows 11)
+Microsoft.Messaging                            # App de mensagens, integra com Skype (Amplamente depreciado)
+Microsoft.Microsoft3DViewer                    # Visualizador de modelos 3D
+Microsoft.MicrosoftJournal                     # App de anotações digitais otimizado para caneta
+Microsoft.MicrosoftOfficeHub                   # Hub para acessar apps e documentos do Microsoft Office (Precursor do app Microsoft 365)
+Microsoft.MicrosoftPowerBIForWindows           # Cliente de serviço de análise de negócios
+Microsoft.MicrosoftSolitaireCollection         # Coleção de jogos de paciência
+Microsoft.MicrosoftStickyNotes                 # App de notas adesivas digitais (Depreciado e substituído pelo OneNote)
+Microsoft.MixedReality.Portal                  # Portal para headsets Windows Mixed Reality
+Microsoft.NetworkSpeedTest                     # Utilitário de teste de velocidade de conexão
+Microsoft.News                                 # Agregador de notícias (Substituiu Bing News, agora parte do Microsoft Start)
+Microsoft.Office.OneNote                       # App de anotações digitais (versão Universal Windows Platform)
+Microsoft.Office.Sway                          # App de apresentação e storytelling
+Microsoft.OneConnect                           # App de gerenciamento de operadora móvel (Substituído por Mobile Plans)
+Microsoft.Print3D                              # Software de preparação para impressão 3D
+Microsoft.PowerAutomateDesktop                 # Ferramenta de automação de desktop (RPA)
+Microsoft.SkypeApp                             # App de comunicação Skype (versão Universal Windows Platform)
+Microsoft.Todos                                # App de lista de tarefas e gerenciamento
+Microsoft.Windows.DevHome                      # Painel de desenvolvedor e utilitário de configuração, não mais suportado
+Microsoft.WindowsAlarms                        # App de Alarmes e Relógio
+Microsoft.WindowsFeedbackHub                   # App para fornecer feedback à Microsoft sobre o Windows
+Microsoft.WindowsMaps                          # App de mapeamento e navegação
+Microsoft.WindowsSoundRecorder                 # App básico de gravação de áudio
+Microsoft.XboxApp                              # App Xbox Console Companion antigo, não mais suportado
+Microsoft.ZuneVideo                            # App Filmes e TV para alugar/comprar/reproduzir conteúdo de vídeo (Renomeado como "Filmes e TV")
+MicrosoftCorporationII.MicrosoftFamily         # App Family Safety para gerenciar contas e configurações familiares
+MicrosoftCorporationII.QuickAssist             # Ferramenta de assistência remota
+MicrosoftTeams                                 # MS Teams pessoal antigo (versão MS Store)
+MSTeams                                        # Novo app MS Teams (Trabalho/Escola ou Pessoal)
+
+ACGMediaPlayer                                 # App reprodutor de mídia
+ActiproSoftwareLLC                             # Potencialmente controles de UI ou componentes de software, frequentemente empacotados por OEMs
+AdobeSystemsIncorporated.AdobePhotoshopExpress # App básico de edição de fotos da Adobe
+Amazon.com.Amazon                              # App de compras Amazon
+AmazonVideo.PrimeVideo                         # App de streaming Amazon Prime Video
+Asphalt8Airborne                               # Jogo de corrida
+AutodeskSketchBook                             # App de desenho e esboço digital
+CaesarsSlotsFreeCasino                         # Jogo de caça-níqueis de cassino
+COOKINGFEVER                                   # Jogo de simulação de restaurante
+CyberLinkMediaSuiteEssentials                  # Suíte de software multimídia (frequentemente pré-instalado por OEMs)
+DisneyMagicKingdoms                            # Jogo de construção de parque temático Disney
+Disney                                         # App geral de conteúdo Disney (pode variar por região/OEM, frequentemente Disney+)
+DrawboardPDF                                   # App de visualização e anotação de PDF, frequentemente focado em entrada por caneta
+Duolingo-LearnLanguagesforFree                 # App de aprendizado de idiomas
+EclipseManager                                 # Frequentemente relacionado a software OEM específico ou utilitários
+Facebook                                       # App de mídia social Facebook
+FarmVille2CountryEscape                        # Jogo de simulação de fazenda
+fitbit                                         # App companheiro de rastreador de atividade Fitbit
+Flipboard                                      # Agregador de notícias e rede social estilizado como revista
+HiddenCity                                     # Jogo de aventura de objetos escondidos
+HULULLC.HULUPLUS                               # App de streaming Hulu
+iHeartRadio                                    # App de streaming de rádio pela internet
+Instagram                                      # App de mídia social Instagram
+king.com.BubbleWitch3Saga                      # Jogo de puzzle da King
+king.com.CandyCrushSaga                        # Jogo de puzzle da King
+king.com.CandyCrushSodaSaga                    # Jogo de puzzle da King
+LinkedInforWindows                             # App de rede profissional LinkedIn
+MarchofEmpires                                 # Jogo de estratégia
+Netflix                                        # App de streaming Netflix
+NYTCrossword                                   # App de palavras cruzadas do New York Times
+OneCalendar                                    # App de agregação de calendário
+PandoraMediaInc                                # App de streaming de música Pandora
+PhototasticCollage                             # App de criação de colagem de fotos
+PicsArt-PhotoStudio                            # App de edição de fotos e criativo
+Plex                                           # App de servidor e reprodutor de mídia
+PolarrPhotoEditorAcademicEdition               # App de edição de fotos (Edição Acadêmica)
+Royal Revolt                                   # Jogo de defesa de torre / estratégia
+Shazam                                         # App de identificação de música
+Sidia.LiveWallpaper                            # App de papel de parede animado
+SlingTV                                        # App de streaming de TV ao vivo
+Spotify                                        # App de streaming de música Spotify
+TikTok                                         # App de vídeos curtos TikTok
+TuneInRadio                                    # App de streaming de rádio pela internet
+Twitter                                        # App de mídia social Twitter (agora X)
+Viber                                          # App de mensagens e chamadas
+WinZipUniversal                                # Utilitário de compressão e extração de arquivos (versão Universal Windows Platform)
+Wunderlist                                     # App de lista de tarefas (Adquirido pela Microsoft, funcionalidade movida para Microsoft To Do)
+XING                                           # Plataforma de rede profissional popular em países de língua alemã
+
+
+
+
+# ------------------------------------------------------------------------------------------------------------- #
+#  Os apps abaixo desta linha NÃO serão desinstalados por padrão. Remova o caractere # na frente de qualquer   #
+#  app que você deseja DESINSTALAR por padrão.                                                                 #
+# ------------------------------------------------------------------------------------------------------------- #
+#Microsoft.BingSearch                          # Pesquisa Web do Microsoft Bing (Integra na Pesquisa do Windows)
+#Microsoft.Copilot                             # Novo app Microsoft Copilot (assistente de IA)
+#Microsoft.Edge                                # Navegador Edge (Só pode ser desinstalado na Área Econômica Europeia)
+#Microsoft.GamingApp                           # App Xbox Gaming moderno, necessário para instalar alguns jogos de PC
+#Microsoft.GetHelp                             # Necessário para alguns Solucionadores de Problemas do Windows 11 e interações de suporte
+#Microsoft.M365Companions                      # Apps mini de Calendário, Arquivos e Pessoas do Microsoft 365 (Business), esses apps podem ser reinstalados se habilitados pelo admin do Microsoft 365
+#Microsoft.MSPaint                             # Paint 3D (Aplicativo de pintura moderno com recursos 3D)
+#Microsoft.OneDrive                            # Cliente de armazenamento em nuvem OneDrive consumer
+#Microsoft.OutlookForWindows                   # Novo app de email: Outlook para Windows
+#Microsoft.Paint                               # Paint Clássico (Aplicativo de pintura 2D tradicional)
+#Microsoft.People                              # Necessário para e incluído com Mail e Calendário (Gerenciamento de contatos)
+#Microsoft.RemoteDesktop                       # App cliente de Área de Trabalho Remota
+#Microsoft.ScreenSketch                        # Ferramenta de Captura (Ferramenta de captura de tela e anotação)
+#Microsoft.StartExperiencesApp                 # Este app alimenta o Meu Feed dos Widgets do Windows
+#Microsoft.Whiteboard                          # App de quadro branco colaborativo digital
+#Microsoft.Windows.Photos                      # App padrão de visualização e edição básica de fotos
+#Microsoft.WindowsCalculator                   # App Calculadora
+#Microsoft.WindowsCamera                       # App Câmera para usar câmeras integradas ou conectadas
+#Microsoft.windowscommunicationsapps           # Suíte de apps Mail e Calendário
+#Microsoft.WindowsNotepad                      # App editor de texto Bloco de Notas
+#Microsoft.WindowsStore                        # Microsoft Store, AVISO: Este app não pode ser reinstalado facilmente se removido!
+#Microsoft.WindowsTerminal                     # Novo app terminal padrão no Windows 11 (Prompt de Comando, PowerShell, WSL)
+#Microsoft.Xbox.TCUI                           # Framework de UI, parece ser necessário para MS store, fotos e certos jogos
+#Microsoft.XboxGameOverlay                     # Overlay de jogo, necessário/útil para alguns jogos (Parte do Xbox Game Bar)
+#Microsoft.XboxGamingOverlay                   # Overlay de jogo, necessário/útil para alguns jogos (Parte do Xbox Game Bar)
+#Microsoft.XboxIdentityProvider                # Framework de login Xbox, necessário para alguns jogos e serviços Xbox
+#Microsoft.XboxSpeechToTextOverlay             # Pode ser necessário para alguns jogos, AVISO: Este app não pode ser reinstalado facilmente! (Recurso de acessibilidade)
+#Microsoft.YourPhone                           # Phone link (Conecta telefone Android/iOS ao PC)
+#Microsoft.ZuneMusic                           # Media Player moderno (Substituiu Groove Music, reproduz áudio/vídeo local)
+#MicrosoftWindows.CrossDevice                  # Integração de telefone no Explorador de Arquivos, Câmera e mais (Parte dos recursos Phone Link)
+#AD2F1837.HPAIExperienceCenter                 # Software OEM HP, recursos e suporte aprimorados por IA
+#AD2F1837.HPConnectedMusic                     # Software OEM HP para música (Potencialmente descontinuado)
+#AD2F1837.HPConnectedPhotopoweredbySnapfish    # Software OEM HP para fotos, integrado com Snapfish (Potencialmente descontinuado)
+#AD2F1837.HPDesktopSupportUtilities            # Software OEM HP fornecendo ferramentas de suporte de desktop
+#AD2F1837.HPEasyClean                          # Software OEM HP para limpeza ou otimização do sistema
+#AD2F1837.HPFileViewer                         # Software OEM HP para visualizar tipos de arquivo específicos
+#AD2F1837.HPJumpStarts                         # Software OEM HP para tutoriais, descoberta de apps ou acesso rápido a recursos HP
+#AD2F1837.HPPCHardwareDiagnosticsWindows       # Software OEM HP para diagnósticos de hardware do PC
+#AD2F1837.HPPowerManager                       # Software OEM HP para gerenciar configurações de energia e bateria
+#AD2F1837.HPPrinterControl                     # Software OEM HP para gerenciar impressoras HP
+#AD2F1837.HPPrivacySettings                    # Software OEM HP para gerenciar configurações de privacidade
+#AD2F1837.HPQuickDrop                          # Software OEM HP para transferência rápida de arquivos entre dispositivos
+#AD2F1837.HPQuickTouch                         # Software OEM HP, possivelmente para atalhos ou controles específicos de toque
+#AD2F1837.HPRegistration                       # Software OEM HP para registro de produto
+#AD2F1837.HPSupportAssistant                   # Software OEM HP para suporte, atualizações e solução de problemas
+#AD2F1837.HPSureShieldAI                       # Software de segurança OEM HP, provavelmente proteção contra ameaças baseada em IA
+#AD2F1837.HPSystemInformation                  # Software OEM HP para exibir informações do sistema
+#AD2F1837.HPWelcome                            # Software OEM HP fornecendo experiência de boas-vindas ou ajuda de configuração inicial
+#AD2F1837.HPWorkWell                           # Software OEM HP focado em bem-estar, possivelmente com lembretes de pausa ou dicas ergonômicas
+#AD2F1837.myHP                                 # App hub central OEM HP para info do dispositivo, suporte e serviços

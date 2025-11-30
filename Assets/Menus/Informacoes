@@ -1,0 +1,85 @@
+Win11Debloat é um script PowerShell leve e fácil de usar que permite limpar e
+melhorar rapidamente sua experiência no Windows. Ele pode remover aplicativos bloatware
+pré-instalados, desativar telemetria, remover elementos intrusivos da interface e muito mais.
+
+-------------------------------------------------------------------------------------------
+ Todas as Funcionalidades
+-------------------------------------------------------------------------------------------
+Remoção de Aplicativos
+- Remover uma ampla variedade de apps pré-instalados.
+- Remover ou substituir todos os apps fixados do menu iniciar para o usuário atual ou para todos os usuários. (Apenas W11)
+
+Telemetria, Rastreamento e Conteúdo Sugerido
+- Desativar telemetria, dados de diagnóstico, histórico de atividades, rastreamento de apps e anúncios direcionados.
+- Desativar dicas, truques, sugestões e anúncios em todo o Windows.
+- Desativar anúncios, sugestões e feed de notícias MSN no Microsoft Edge.
+- Desativar a opção de plano de fundo 'Windows Spotlight' na área de trabalho.
+
+Pesquisa Web Bing, Copilot e Recursos de IA
+- Desativar e remover pesquisa web do Bing, Bing AI e Cortana da pesquisa do Windows.
+- Desativar e remover Microsoft Copilot.
+- Desativar Windows Recall. (Apenas W11)
+- Desativar Click to Do, ferramenta de análise de texto e imagem por IA. (Apenas W11)
+- Desativar recursos de IA no Edge. (Apenas W11)
+- Desativar recursos de IA no Paint. (Apenas W11)
+- Desativar recursos de IA no Bloco de Notas. (Apenas W11)
+
+Personalização
+- Ativar modo escuro para sistema e apps.
+- Desativar transparência, animações e efeitos visuais.
+- Desativar Aprimorar Precisão do Ponteiro, também conhecido como aceleração do mouse.
+- Desativar o atalho de teclado das Teclas de Aderência. (Apenas W11)
+- Restaurar o menu de contexto antigo estilo Windows 10. (Apenas W11)
+- Ocultar as opções 'Incluir na biblioteca', 'Conceder acesso a' e 'Compartilhar' do menu de contexto. (Apenas W10)
+
+Explorador de Arquivos
+- Alterar o local padrão onde o Explorador de Arquivos abre.
+- Mostrar arquivos, pastas e unidades ocultas.
+- Mostrar extensões de arquivo para tipos conhecidos.
+- Ocultar a seção Início ou Galeria do painel de navegação do Explorador de Arquivos. (Apenas W11)
+- Ocultar a pasta Objetos 3D, música ou OneDrive do painel de navegação do Explorador de Arquivos. (Apenas W10)
+- Ocultar entradas duplicadas de unidades removíveis do painel de navegação do Explorador de Arquivos.
+
+Barra de Tarefas
+- Alinhar ícones da barra de tarefas à esquerda. (Apenas W11)
+- Escolher modo de combinação para botões e rótulos da barra de tarefas. (Apenas W11)
+- Escolher como os ícones de apps são mostrados na barra de tarefas ao usar múltiplos monitores. (Apenas W11)
+- Ocultar ou alterar o ícone/caixa de pesquisa na barra de tarefas. (Apenas W11)
+- Ocultar o botão de visão de tarefas da barra de tarefas. (Apenas W11)
+- Desativar widgets na barra de tarefas e tela de bloqueio.
+- Ocultar o ícone de chat (meet now) da barra de tarefas. (Apenas W10)
+- Ativar a opção 'Encerrar Tarefa' no menu de clique direito da barra de tarefas. (Apenas W11)
+- Ativar o comportamento 'Último Clique Ativo' na área de apps da barra de tarefas.
+
+Menu Iniciar
+- Desativar a seção recomendados no menu iniciar. (Apenas W11)
+- Desativar a integração Phone Link de dispositivos móveis no menu iniciar. (Apenas W11)
+
+Outros
+- Desativar gravação de tela/jogo do Xbox Game Bar e integração com controle. Isso também desativa os popups `msgaming overlay`.
+- Desativar Inicialização Rápida para garantir desligamento completo.
+- Desativar conectividade de rede durante Modern Standby para reduzir consumo de bateria. (Apenas W11)
+- Opção de aplicar alterações a um usuário diferente, em vez do usuário logado atualmente.
+- Modo Sysprep para aplicar alterações ao perfil de usuário padrão do Windows.
+
+-------------------------------------------------------------------------------------------
+ Modo Padrão
+-------------------------------------------------------------------------------------------
+O modo padrão aplica as alterações recomendadas para a maioria dos usuários. Isso inclui:
+- Remover a seleção padrão ou sua seleção personalizada de apps.
+- Desativar telemetria, dados de diagnóstico, rastreamento de apps e anúncios direcionados.
+- Desativar dicas, truques, sugestões e anúncios em todo o Windows.
+- Desativar anúncios, sugestões e feed de notícias MSN no Microsoft Edge.
+- Desativar e remover pesquisa web do Bing, Bing AI e Cortana da pesquisa do Windows.
+- Desativar e remover Microsoft Copilot.
+- Desativar Windows Recall. (Apenas W11)
+- Desativar Click to Do, ferramenta de análise de texto e imagem por IA. (Apenas W11)
+- Desativar Inicialização Rápida para garantir desligamento completo.
+- Desativar conectividade de rede durante Modern Standby para reduzir consumo de bateria. (Apenas W11)
+- Mostrar extensões de arquivo para tipos conhecidos.
+- Ocultar a pasta Objetos 3D no Windows Explorer. (Apenas W10)
+- Desativar widgets na barra de tarefas e tela de bloqueio.
+- Ocultar o ícone de Chat (meet now) da barra de tarefas. (Apenas W10)
+
+
+

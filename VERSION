@@ -1,0 +1,18 @@
+1.0.0-ptbr
+
+# Histórico de Versões - Win11Debloat PT-BR
+# ==========================================
+# Autor Original: Raphire (https://github.com/Raphire)
+# Tradução e Customização: Arnaldo Lima (https://arnaldolima.com)
+# ==========================================
+
+## v1.0.0-ptbr (29/11/2025)
+- Tradução completa para Português Brasil
+- Documentação detalhada em PT-BR
+- Arquivo de idioma (Lang/pt-BR.psd1)
+- Lista de apps traduzida (ListaApps.txt)
+- Menus traduzidos (Assets/Menus/)
+- Script de execução PT-BR (Executar.bat)
+- Análise técnica completa
+- Guia de reversão
+- Guia de funcionalidades
