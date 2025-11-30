@@ -2,6 +2,7 @@
 
 [CmdletBinding(SupportsShouldProcess)]
 param (
+    [string]$Language = "pt-BR",
     [switch]$Silent,
     [switch]$Sysprep,
     [string]$LogPath,
@@ -77,9 +78,32 @@ param (
 )
 
 
+# Carrega arquivo de idioma / Load language file
+$script:Lang = $null
+$langFile = "$PSScriptRoot\Lang\$Language.psd1"
+if (Test-Path $langFile) {
+    try {
+        $script:Lang = Import-PowerShellDataFile $langFile
+    } catch {
+        Write-Host "Aviso: Não foi possível carregar o arquivo de idioma $Language" -ForegroundColor Yellow
+    }
+}
+
+# Função auxiliar para obter string traduzida / Helper function to get translated string
+function Get-LocalizedString {
+    param([string]$Key, [string]$Default, [object[]]$FormatArgs)
+    if ($script:Lang -and $script:Lang.ContainsKey($Key)) {
+        $text = $script:Lang[$Key]
+        if ($FormatArgs) { return ($text -f $FormatArgs) }
+        return $text
+    }
+    if ($FormatArgs) { return ($Default -f $FormatArgs) }
+    return $Default
+}
+
 # Show error if current powershell environment is limited by security policies
 if ($ExecutionContext.SessionState.LanguageMode -ne "FullLanguage") {
-    Write-Host "Error: Win11Debloat is unable to run on your system, powershell execution is restricted by security policies" -ForegroundColor Red
+    Write-Host (Get-LocalizedString "ErrorPolicyRestricted" "Error: Win11Debloat is unable to run on your system, powershell execution is restricted by security policies") -ForegroundColor Red
     AwaitKeyToExit
 }
 
